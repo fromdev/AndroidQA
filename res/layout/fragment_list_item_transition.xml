@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.special"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants" >
+
+    <TextView
+        android:id="@+id/hidden_view"
+        android:layout_width="200dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="right"
+        android:background="@color/theme_color"
+        android:enabled="false"
+        android:gravity="center"
+        android:text="sdddd"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/front_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_transparent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:paddingLeft="10dp" >
+
+            <TextView
+                android:id="@+id/item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:text="string/list_title_placeholder"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/item_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="sans-serif-light"
+                android:paddingRight="5dp"
+                android:text="tring/list_description_placeholder"
+                android:textColor="@color/gray" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_color">#ff33b5e5</color><!--  Main color, used for buttons & layouts as default -->
+    <color name="sub_color">#cccccc</color><!--  Color used in the bar below the title, with actions -->
+    <color name="bar_color">#676767</color>
+    <color name="bar_color_transparent">#86676767</color>
+    <color name="bar_separator_color">#ebebeb</color>
+    <color name="white_transparent">#D9FFFFFF</color><!--  Used as background in some activities -->
+    <color name="gray_transparent">#A61F1F21</color>
+    <color name="gray">#1F1F21</color>
+    <color name="green">#FF99CC00</color>
+    <color name="red">#FF0000</color>
+      <color name="black">#000000</color>
+    <color name="transparent">@android:color/transparent</color>
+</resources>

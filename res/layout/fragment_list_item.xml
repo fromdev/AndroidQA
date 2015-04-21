@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout 
+    	android:id="@+id/relativelayout"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content" >
+    	
+    	<RelativeLayout
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:background="@color/white_transparent"
+    	    android:orientation="horizontal" >
+
+    		<TextView
+        		android:id="@+id/item_title"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+        		android:padding="10dp"
+        		android:text="ass"
+        		android:layout_toLeftOf="@+id/item_numbertext"
+        		android:fontFamily="sans-serif-light" 
+        		android:textSize="@dimen/textsize_medium_large"
+        		android:textColor="@color/gray"/>
+    		
+    		<TextView
+    		    android:id="@+id/item_numbertext"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content"
+    		    android:layout_alignParentRight="true"
+    		    android:layout_centerVertical="true"
+    		    android:fontFamily="sans-serif-light"
+    		    android:padding="5dp"
+    		    android:text="sss"
+    		    android:textColor="@color/theme_color"
+    		    android:textSize="@dimen/textsize_medium_small_static" />
+    		
+    	</RelativeLayout>
+
+	</RelativeLayout>
+	<ImageView
+	      android:contentDescription="asd"
+          android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:background="@color/theme_color"/>
+
+</LinearLayout>

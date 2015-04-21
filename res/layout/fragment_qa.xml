@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pagefragement_viewgroup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:padding="10dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clickable="false"
+        android:focusable="false" />
+
+    <RelativeLayout
+        android:id="@+id/webviewcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="18"
+        android:background="@drawable/drawable_dashed"
+        android:clickable="false"
+        android:focusable="false"
+        android:fontFamily="sans-serif-light" >
+
+        <WebView
+            android:id="@+id/fragmentqa_txtquestion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:clickable="false"
+            android:focusable="false" />
+    </RelativeLayout>
+  <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clickable="false"
+        android:focusable="false" />
+    <TextView
+        android:id="@+id/fragmentqa_txttap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="center_horizontal"
+        android:text="@string/tap_view_answer"
+        android:textColor="@color/gray_transparent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clickable="false"
+        android:focusable="false" />
+
+</LinearLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Android QA</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="imagedescription">Welcome</string>
+    <string name="question_of_day">Question Of The Day</string>
+    <string name="browse_ques">Browse Questions</string>
+    <string name="feedback">Feedback</string>
+    <string name="about">About</string>
+    <string name="update_question">Update Questions</string>
+    <string name="send_feeback">Send Feedback</string>
+    <string name="last_update_on">Last Update On:</string>
+    <string name="current_update_status">Current Update Status:</string>
+    <string name="update_now">Update Now</string>
+    <string name="email_address">Email Address</string>
+    <string name="message">Message</string>
+    <string name="question">Question</string>
+    <string name="answer">Answer</string>
+    <string name="update">Update</string>
+    <string name="category">Categories</string>
+    <string name="home">Home</string>
+    <string name="more">More</string>
+    <string name="title">Title</string>
+    <string name="tap_view_question">Tap To View Question </string>
+    <string name="tap_view_answer">Tap To View Answer</string>
+    <string name="enter_valid_email">Enter Valid Email</string>
+    <string name="failed">Failed</string>
+    <string name="success">Success</string>
+    <string name="in_progress">In Progress</string>
+    <string name="feedback_successful">Thanks.Your Feedback has been sent!</string>
+
+</resources>
