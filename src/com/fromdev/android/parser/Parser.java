@@ -92,24 +92,24 @@ public class Parser {
 				JSONObject mJsonObject = new JSONObject(jsonString);
 
 				Global.getInstance().setAppName(
-						mJsonObject.getString(Constant.TAG_APP_NAME));
+						getString(mJsonObject,Constant.TAG_APP_NAME));
 				Global.getInstance().setVerion(
-						mJsonObject.getString(Constant.TAG_VERSION));
+						getString(mJsonObject,Constant.TAG_VERSION));
 				Global.getInstance().setAboutTitle(
-						mJsonObject.getString(Constant.TAG_ABOUT_TITLE));
+						getString(mJsonObject,Constant.TAG_ABOUT_TITLE));
 				Global.getInstance().setAboutDesc(
-						mJsonObject.getString(Constant.TAG_ABOUT_DESC));
+						getString(mJsonObject,Constant.TAG_ABOUT_DESC));
 				Log.e(TAG, "" + Global.getInstance().getAboutDesc());
 
 				Global.getInstance().setEmailidString(
-						mJsonObject.getString(Constant.TAG_EMAIL_SENDER));
+						getString(mJsonObject,Constant.TAG_EMAIL_SENDER));
 
 				Global.getInstance().setPasswordString(
-						mJsonObject
-								.getString(Constant.TAG_SENDER_EMAIL_PASSWORD));
+						
+								getString(mJsonObject,Constant.TAG_SENDER_EMAIL_PASSWORD));
 
-				Global.getInstance().setReceiverEmailString(mJsonObject
-						.getString(Constant.TAG_RECEIVER_EMAIL));
+				Global.getInstance().setReceiverEmailString(
+						getString(mJsonObject,Constant.TAG_RECEIVER_EMAIL));
 				Log.e(TAG, "" + Global.getInstance().getEmailidString());
 				// get JSON array from JSON object
 				JSONArray mJsonArray = mJsonObject.getJSONArray("qaList");
@@ -119,25 +119,38 @@ public class Parser {
 					JSONObject arrayJsonObject = mJsonArray.getJSONObject(i);
 					// create a question object
 					Question mQuestion = new Question();
-					mQuestion.setId(arrayJsonObject
-							.getString(Constant.TAG_JSON_ID));
-					mQuestion.setQuestion(arrayJsonObject
-							.getString(Constant.TAG_QUESTION));
-					mQuestion.setAnswer(arrayJsonObject
-							.getString(Constant.TAG_ANSWER));
-					mQuestion.setCategory(arrayJsonObject
-							.getString(Constant.TAG_CATEGORY));
+					mQuestion.setId(
+							getString(arrayJsonObject,Constant.TAG_JSON_ID));
+					mQuestion.setQuestion(
+							getString(arrayJsonObject,Constant.TAG_QUESTION));
+					mQuestion.setAnswer(
+							getString(arrayJsonObject,Constant.TAG_ANSWER));
+					mQuestion.setCategory(
+							getString(arrayJsonObject,Constant.TAG_CATEGORY));
 
 					mQuestionList.add(mQuestion);
 				}
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				Log.e(TAG, "Error parsing JSON data", e);
 			}
 
 		}
 		return mQuestionList;
 
+	}
+	
+	private String getString(JSONObject json, String key) {
+		return getString(json,key,"Not Available");
+	}
+	private String getString(JSONObject json, String key, String defaultValue) {
+		String value = defaultValue;
+		try {
+			value = json.getString(key);
+		} catch(Exception e) {
+			Log.e(TAG, "Can not find in json doc  key=" + key, e);
+		}
+		return value;
 	}
 
 	public Boolean isJsonStringValid(String jsonString) {
