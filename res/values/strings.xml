@@ -29,5 +29,6 @@
     <string name="success">Success</string>
     <string name="in_progress">In Progress</string>
     <string name="feedback_successful">Thanks.Your Feedback has been sent!</string>
+    <string name="updateUrl">https://github.com/fromdev/fromdev-static/raw/gh-pages/release/android/qaconfig.json.zip</string>
 
 </resources>

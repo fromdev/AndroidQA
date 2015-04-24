@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -92,6 +94,7 @@ public class FeedbackActivity extends Activity {
 
 				sender = emailEditText.getText().toString();
 				message = messageEditText.getText().toString();
+				message = appendAppInfo(message);
 				if (isOnline()) {
 					if (isEmailValid(sender)) {
 						showCustomDialog();
@@ -116,6 +119,18 @@ public class FeedbackActivity extends Activity {
 			}
 		});
 
+	}
+	private String appendAppInfo(String message) {
+		if(message ==null) message = "";
+		try {
+			PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+			message+="\n App Version: " + pInfo.versionName + "-" + Global.getInstance().getVerion();
+			message+="\n AppName: " + Global.getInstance().getAppName();
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return message;
 	}
 
 	@Override

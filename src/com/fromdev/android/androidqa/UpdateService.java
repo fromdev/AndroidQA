@@ -210,7 +210,7 @@ public class UpdateService extends Service {
 					break;
 				case DownloadManager.STATUS_FAILED:
 					Log.d(TAG, "FAILED DOWNLOAD");
-					updatePreferences(getResources().getString(R.string.failed));
+					CommonUtil.updatePreferences(mEditor,getResources().getString(R.string.failed));
 					break;
 
 				default:
@@ -245,14 +245,10 @@ public class UpdateService extends Service {
 						deleteFile();
 					}
 
-					SimpleDateFormat mDateFormat = new SimpleDateFormat(
-							"dd/MM/yyy");
-					Calendar mCalendar = Calendar.getInstance();
-					String date = mDateFormat.format(mCalendar.getTime());
+					
 					// updating system preferences
-					updatePreferences(date,
+					CommonUtil.updatePreferences(mEditor,
 							getResources().getString(R.string.success));
-					Log.e(TAG, "date=" + date + "status =success");
 					// sending a local broadcast to update UI
 					SendLocalBroadCast(getResources().getString(
 							R.string.success));
@@ -260,7 +256,7 @@ public class UpdateService extends Service {
 
 				} else {
 					// updating the preference
-					updatePreferences(getResources().getString(R.string.failed));
+					CommonUtil.updatePreferences(mEditor,getResources().getString(R.string.failed));
 					// sending a local broadcast to update UI
 					SendLocalBroadCast(getResources()
 							.getString(R.string.failed));
@@ -268,7 +264,7 @@ public class UpdateService extends Service {
 				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
-				updatePreferences(getResources().getString(R.string.failed));
+				CommonUtil.updatePreferences(mEditor,getResources().getString(R.string.failed));
 				SendLocalBroadCast(getResources().getString(R.string.failed));
 				e.printStackTrace();
 				Log.e(TAG, e.getMessage(), e);
@@ -276,17 +272,6 @@ public class UpdateService extends Service {
 			}
 		}
 	});
-
-	public void updatePreferences(String date, String status) {
-		mEditor.putString("updateDate", date);
-		mEditor.putString("updateStatus", status);
-		mEditor.commit();
-	}
-
-	public void updatePreferences(String status) {
-		mEditor.putString("updateStatus", status);
-		mEditor.commit();
-	}
 
 	/*
 	 * sending Local Broadcast for updating Update Status

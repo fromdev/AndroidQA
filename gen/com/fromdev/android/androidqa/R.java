@@ -169,6 +169,7 @@ public final class R {
         public static final int tap_view_question=0x7f090015;
         public static final int title=0x7f090014;
         public static final int update=0x7f090010;
+        public static final int updateUrl=0x7f09001c;
         public static final int update_now=0x7f09000b;
         public static final int update_question=0x7f090007;
     }

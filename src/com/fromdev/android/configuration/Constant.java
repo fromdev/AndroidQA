@@ -30,5 +30,6 @@ public class Constant {
 	public final static String TAG_CATEGORY = "category";
 	public final static String DATE = "13/10/2014";
 	public final static String TAG_PREF_FILE_NAME = "pref";
+	public static final String URL = "https://github.com/fromdev/fromdev-static/raw/gh-pages/release/android/qaconfig.json.zip";
 
 }

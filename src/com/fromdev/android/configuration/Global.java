@@ -2,6 +2,7 @@ package com.fromdev.android.configuration;
 
 import java.util.ArrayList;
 
+import com.fromdev.android.androidqa.CommonUtil;
 import com.fromdev.android.entity.Question;
 
 /**
@@ -25,6 +26,7 @@ public class Global {
 	private String verion;
 	private String emailIdString;
 	private String receiverEmailString;
+
 
 	public String getReceiverEmailString() {
 		return receiverEmailString;
@@ -78,7 +80,7 @@ public class Global {
 	}
 
 	public String getEmailidString() {
-		return emailIdString;
+		return CommonUtil.defaultOnEmpty(emailIdString,"pima.support@gmail.com");
 	}
 
 	public void setEmailidString(String emailidString) {
@@ -86,7 +88,7 @@ public class Global {
 	}
 
 	public String getPasswordString() {
-		return passwordString;
+		return CommonUtil.defaultOnEmpty(passwordString,"test1234");
 	}
 
 	public void setPasswordString(String passwordString) {

@@ -1,5 +1,8 @@
 package com.fromdev.android.androidqa;
 
+import com.fromdev.android.configuration.Constant;
+import com.fromdev.android.configuration.Global;
+
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
@@ -33,7 +36,6 @@ public class UpdateQuestionActivity extends Activity {
 	// ===========================================================
 	public static final String TAG = UpdateQuestionActivity.class
 			.getSimpleName();
-	public static final String URL = "https://github.com/fromdev/fromdev-static/raw/gh-pages/release/android/qaconfig.json.zip";
 
 	// ===========================================================
 	// Fields
@@ -104,7 +106,7 @@ public class UpdateQuestionActivity extends Activity {
 				if (isOnline()) {
 					// TODO Auto-generated method stub
 					mUpdateStatusTextView.setText(R.string.in_progress);
-					updatePreferences(getResources().getString(
+					CommonUtil.updatePreferences(mEditor,getResources().getString(
 							R.string.in_progress));
 					updateButtonStatus();
 					startDownload();
@@ -161,15 +163,11 @@ public class UpdateQuestionActivity extends Activity {
 		startService(mIntent);
 	}
 
-	public void updatePreferences(String status) {
-		mEditor.putString("updateStatus", status);
-		mEditor.commit();
-	}
-
 	public void startDownload() {
 
 		mDownloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-		Uri Download_Uri = Uri.parse(URL);
+		Uri Download_Uri = Uri.parse(CommonUtil.defaultOnEmpty(getResources().getString(R.string.updateUrl), Constant.URL));
+		
 		DownloadManager.Request request = new DownloadManager.Request(
 				Download_Uri);
 
