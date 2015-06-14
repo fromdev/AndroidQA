@@ -1,5 +1,17 @@
 package com.fromdev.android.androidqa;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -61,6 +73,7 @@ public class FeedbackActivity extends Activity {
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -197,6 +210,7 @@ public class FeedbackActivity extends Activity {
 			public void run() {
 				// TODO Auto-generated method stub
 				try {
+					submitFeedback("test@a.com",message);
 					GMailSender sender = new GMailSender(Global.getInstance().getEmailidString(),
 							Global.getInstance().getPasswordString());
 					if (sender.sendMail(FeedbackActivity.this.sender, message,
@@ -216,6 +230,31 @@ public class FeedbackActivity extends Activity {
 		});
 		mThread.start();
 
+	}
+	
+	private void submitFeedback(String fromEmail,String message) {
+	    HttpClient client = new DefaultHttpClient();
+	    HttpPost post = new HttpPost("https://docs.google.com/spreadsheets/d/17k4k0YjZZ8eitqGvTkiKcax1Xb0kH7oEBycAYZnKIwc");
+
+	    List<BasicNameValuePair> results = new ArrayList<BasicNameValuePair>();
+	    results.add(new BasicNameValuePair("entry.1015067069", fromEmail));
+	    results.add(new BasicNameValuePair("entry.726134038", message));
+
+	    try {
+	        post.setEntity(new UrlEncodedFormEntity(results));
+	    } catch (UnsupportedEncodingException e) {
+	        // Auto-generated catch block
+	        Log.e("YOUR_TAG", "An error has occurred", e);
+	    }
+	    try {
+	        client.execute(post);
+	    } catch (ClientProtocolException e) {
+	        // Auto-generated catch block
+	        Log.e("YOUR_TAG", "client protocol exception", e);
+	    } catch (IOException e) {
+	        // Auto-generated catch block
+	        Log.e("YOUR_TAG", "io exception", e);
+	    }
 	}
 
 	private boolean isEmailValid(CharSequence email) {
