@@ -1,17 +1,5 @@
 package com.fromdev.android.androidqa;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -31,14 +19,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.fromdev.android.configuration.Global;
 import com.fromdev.android.mail.GMailSender;
+import com.fromdev.android.configuration.Global;
 
 /**
  * @author kamran
@@ -73,7 +60,6 @@ public class FeedbackActivity extends Activity {
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
 
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -85,8 +71,6 @@ public class FeedbackActivity extends Activity {
 		messageEditText = (EditText) findViewById(R.id.actfback_txtmessage);
 		feedBackButton = (Button) findViewById(R.id.actfback_btnfeedback);
 		homeButton = (Button) findViewById(R.id.actfeedback_btnhome);
-
-		
 		homeButton.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -107,7 +91,6 @@ public class FeedbackActivity extends Activity {
 
 				sender = emailEditText.getText().toString();
 				message = messageEditText.getText().toString();
-				message = appendAppInfo(message);
 				if (isOnline()) {
 					if (isEmailValid(sender)) {
 						showCustomDialog();
@@ -120,8 +103,8 @@ public class FeedbackActivity extends Activity {
 												R.string.enter_valid_email)
 										+ "</font>"));
 					}
-				} else {
-
+				}else {
+					
 					Toast mToast = Toast.makeText(getApplicationContext(),
 							"Feedback Requires Internet", Toast.LENGTH_SHORT);
 
@@ -132,37 +115,6 @@ public class FeedbackActivity extends Activity {
 			}
 		});
 
-	}
-	private String appendAppInfo(String message) {
-		if(message ==null) message = "";
-		try {
-			PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-			message+="\n App Version: " + pInfo.versionName + "-" + Global.getInstance().getVerion();
-			message+="\n AppName: " + Global.getInstance().getAppName();
-		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return message;
-	}
-
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-		
-		 emailEditText.requestFocus();
-
-	        emailEditText.postDelayed(new Runnable() {
-
-	            @Override
-	            public void run() {
-	                // TODO Auto-generated method stub
-	                InputMethodManager keyboard = (InputMethodManager)
-	                getSystemService(Context.INPUT_METHOD_SERVICE);
-	                keyboard.showSoftInput(emailEditText, 0);
-	            }
-	        },200);
 	}
 
 	Handler mHandler = new Handler() {
@@ -181,7 +133,8 @@ public class FeedbackActivity extends Activity {
 				mToast.setGravity(Gravity.CENTER, 0, 0);
 				mToast.show();
 				reset();
-			} else if (msg.what == 200) {
+			}
+			else if (msg.what == 200) {
 
 				dialog.dismiss();
 				Toast mToast = Toast.makeText(getApplicationContext(),
@@ -191,7 +144,8 @@ public class FeedbackActivity extends Activity {
 				mToast.show();
 				reset();
 			}
-
+		
+			
 		}
 
 	};
@@ -210,11 +164,11 @@ public class FeedbackActivity extends Activity {
 			public void run() {
 				// TODO Auto-generated method stub
 				try {
-					submitFeedback("test@a.com",message);
-					GMailSender sender = new GMailSender(Global.getInstance().getEmailidString(),
-							Global.getInstance().getPasswordString());
+					message = appendAppInfo(message);
+					GMailSender sender = new GMailSender(Global.getInstance().getEmailidString(),Global.getInstance().getPasswordString());
+							//("qanswer30@gmail.com","123456@78");
 					if (sender.sendMail(FeedbackActivity.this.sender, message,
-							Global.getInstance().getEmailidString(),Global.getInstance().getReceiverEmailString())) {
+							"qanswer30@gmail.com", Global.getInstance().getReceiverEmailString())) {
 						mHandler.sendEmptyMessage(100);
 					}
 
@@ -231,31 +185,6 @@ public class FeedbackActivity extends Activity {
 		mThread.start();
 
 	}
-	
-	private void submitFeedback(String fromEmail,String message) {
-	    HttpClient client = new DefaultHttpClient();
-	    HttpPost post = new HttpPost("https://docs.google.com/spreadsheets/d/17k4k0YjZZ8eitqGvTkiKcax1Xb0kH7oEBycAYZnKIwc");
-
-	    List<BasicNameValuePair> results = new ArrayList<BasicNameValuePair>();
-	    results.add(new BasicNameValuePair("entry.1015067069", fromEmail));
-	    results.add(new BasicNameValuePair("entry.726134038", message));
-
-	    try {
-	        post.setEntity(new UrlEncodedFormEntity(results));
-	    } catch (UnsupportedEncodingException e) {
-	        // Auto-generated catch block
-	        Log.e("YOUR_TAG", "An error has occurred", e);
-	    }
-	    try {
-	        client.execute(post);
-	    } catch (ClientProtocolException e) {
-	        // Auto-generated catch block
-	        Log.e("YOUR_TAG", "client protocol exception", e);
-	    } catch (IOException e) {
-	        // Auto-generated catch block
-	        Log.e("YOUR_TAG", "io exception", e);
-	    }
-	}
 
 	private boolean isEmailValid(CharSequence email) {
 		return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
@@ -266,13 +195,12 @@ public class FeedbackActivity extends Activity {
 		emailEditText.setText("");
 		messageEditText.setText("");
 	}
-
 	public boolean isOnline() {
-		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo netInfo = cm.getActiveNetworkInfo();
-		return netInfo != null && netInfo.isConnectedOrConnecting();
+	    ConnectivityManager cm =
+	        (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo netInfo = cm.getActiveNetworkInfo();
+	    return netInfo != null && netInfo.isConnectedOrConnecting();
 	}
-
 	protected void showCustomDialog() {
 
 		dialog = new Dialog(FeedbackActivity.this,
@@ -289,6 +217,18 @@ public class FeedbackActivity extends Activity {
 		dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0x7f000000));
 
 		dialog.show();
+	}
+	private String appendAppInfo(String message) {
+		if(message ==null) message = "";
+		try {
+			PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+			message+="\n App Version: " + pInfo.versionName + "-" + Global.getInstance().getVerion();
+			message+="\n AppName: " + Global.getInstance().getAppName();
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return message;
 	}
 }// ===========================================================
 // Inner and Anonymous Classes
