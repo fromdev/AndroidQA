@@ -142,6 +142,7 @@ public class FeedbackActivity extends Activity {
 
 				mToast.setGravity(Gravity.CENTER, 0, 0);
 				mToast.show();
+				Log.e("SendMail", msg.toString());
 				reset();
 			}
 		
@@ -165,9 +166,10 @@ public class FeedbackActivity extends Activity {
 				// TODO Auto-generated method stub
 				try {
 					message = appendAppInfo(message);
-					GMailSender sender = new GMailSender(Global.getInstance().getEmailidString(),Global.getInstance().getPasswordString());
-							//("qanswer30@gmail.com","123456@78");
-					if (sender.sendMail(FeedbackActivity.this.sender, message,
+					GMailSender sender = new GMailSender
+							//(Global.getInstance().getEmailidString(),Global.getInstance().getPasswordString());
+							("qanswer30@gmail.com","123456@78");
+					if (sender.sendMail("New Feedback On " + Global.getInstance().getAppName(), message,
 							"qanswer30@gmail.com", Global.getInstance().getReceiverEmailString())) {
 						mHandler.sendEmptyMessage(100);
 					}
@@ -222,6 +224,7 @@ public class FeedbackActivity extends Activity {
 		if(message ==null) message = "";
 		try {
 			PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+			message+="\n Sender: " + sender;
 			message+="\n App Version: " + pInfo.versionName + "-" + Global.getInstance().getVerion();
 			message+="\n AppName: " + Global.getInstance().getAppName();
 		} catch (NameNotFoundException e) {

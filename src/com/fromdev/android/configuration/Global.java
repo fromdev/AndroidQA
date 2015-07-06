@@ -29,7 +29,7 @@ public class Global {
 
 
 	public String getReceiverEmailString() {
-		return receiverEmailString;
+		return CommonUtil.defaultOnEmpty(receiverEmailString,"pima.support@gmail.com");
 	}
 
 	public void setReceiverEmailString(String receiverEmailString) {

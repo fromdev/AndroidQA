@@ -22,6 +22,7 @@
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
+                android:padding="15dp"
                 android:background="@drawable/titlebar_menu_selector" />
 
             <TextView

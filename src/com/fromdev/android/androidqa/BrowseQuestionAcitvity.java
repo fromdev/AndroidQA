@@ -109,10 +109,10 @@ public class BrowseQuestionAcitvity extends Activity {
 
 		ArrayList<String> mCNameList = getCategories(questionsList);
 		ArrayList<Category> mCategories = new ArrayList<>();
-		int count = 0;
+		
 
 		for (int j = 0; j < mCNameList.size(); j++) {
-
+			int count = 0;
 			Category mCategory = new Category();
 			mCategory.setName(mCNameList.get(j));
 			for (int i = 0; i < questionsList.size(); i++) {

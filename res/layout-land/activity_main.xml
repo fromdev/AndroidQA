@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:background="@color/bar_separator_color"
-            android:contentDescription="title" />
+            android:contentDescription="@string/title" />
     </LinearLayout>
 
     <RelativeLayout
@@ -52,7 +52,8 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:contentDescription="@string/imagedescription"
-            android:src="@drawable/logotrans" />
+            android:src="@drawable/logotrans"
+            android:padding="15dp"/>
 
         <LinearLayout
             android:id="@+id/linearlayout"
@@ -60,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
-            android:paddingBottom="5dp" >
+            android:padding="10dp" >
 
             <Button
                 android:id="@+id/btn_question_of_day"

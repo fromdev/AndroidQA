@@ -102,14 +102,14 @@ public class Parser {
 				Log.e(TAG, "" + Global.getInstance().getAboutDesc());
 
 				Global.getInstance().setEmailidString(
-						getString(mJsonObject,Constant.TAG_EMAIL_SENDER));
+						getString(mJsonObject,Constant.TAG_EMAIL_SENDER,"pima.support@gmail.com"));
 
 				Global.getInstance().setPasswordString(
 						
-								getString(mJsonObject,Constant.TAG_SENDER_EMAIL_PASSWORD));
+								getString(mJsonObject,Constant.TAG_SENDER_EMAIL_PASSWORD,"test1234"));
 
 				Global.getInstance().setReceiverEmailString(
-						getString(mJsonObject,Constant.TAG_RECEIVER_EMAIL));
+						getString(mJsonObject,Constant.TAG_RECEIVER_EMAIL,"pima.support@gmail.com"));
 				Log.e(TAG, "" + Global.getInstance().getEmailidString());
 				// get JSON array from JSON object
 				JSONArray mJsonArray = mJsonObject.getJSONArray("qaList");

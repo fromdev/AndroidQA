@@ -47,12 +47,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+         android:padding="25dp"
+          >
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3" />
+            android:layout_height="wrap_content"
+            android:layout_weight="3" 
+            android:padding="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/update_main_message"
+             android:textAppearance="?android:textAppearanceMedium"/>
 
         <LinearLayout
             android:id="@+id/LinearLayout1"
@@ -60,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_weight="1" >
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/actudateques_txtlastudate"

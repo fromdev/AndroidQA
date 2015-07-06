@@ -11,6 +11,7 @@
     <string name="update_question">Update Questions</string>
     <string name="send_feeback">Send Feedback</string>
     <string name="last_update_on">Last Update On:</string>
+    <string name="update_main_message">Update to latest available questions. Requires app restart after update. </string>
     <string name="current_update_status">Current Update Status:</string>
     <string name="update_now">Update Now</string>
     <string name="email_address">Email Address</string>
@@ -22,7 +23,7 @@
     <string name="home">Home</string>
     <string name="more">More</string>
     <string name="title">Title</string>
-    <string name="tap_view_question">Tap To View Question </string>
+    <string name="tap_view_question">Swipe right to view next question</string>
     <string name="tap_view_answer">Tap To View Answer</string>
     <string name="enter_valid_email">Enter Valid Email</string>
     <string name="failed">Failed</string>
