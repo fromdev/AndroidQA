@@ -19,8 +19,9 @@
                 android:id="@+id/actqascreen_btnhome"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:layout_gravity="left|center_vertical"
+                android:layout_gravity="start|center_vertical"
                 android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/titlebar_menu_selector" />
 
             <TextView
@@ -39,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:background="@color/bar_separator_color"
-            android:contentDescription="title" />
+            android:contentDescription="@string/title" />
     </LinearLayout>
 
     <LinearLayout

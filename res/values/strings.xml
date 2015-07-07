@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Android QA</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Java QA</string>
     <string name="imagedescription">Welcome</string>
     <string name="question_of_day">Question Of The Day</string>
     <string name="browse_ques">Browse Questions</string>
@@ -30,6 +29,8 @@
     <string name="success">Success</string>
     <string name="in_progress">In Progress</string>
     <string name="feedback_successful">Thanks.Your Feedback has been sent!</string>
+    <string name="default_update_date">10/05/2014</string>
+    <string name="default_update_status">Ready</string>
     <string name="updateUrl">https://github.com/fromdev/fromdev-static/raw/gh-pages/release/android/qaconfig.json.zip</string>
 
 </resources>

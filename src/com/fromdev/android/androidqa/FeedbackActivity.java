@@ -157,7 +157,7 @@ public class FeedbackActivity extends Activity {
 
 	private void Send_Email() {
 
-		subject = "Feeback";
+		subject = "Feedback";
 
 		Thread mThread = new Thread(new Runnable() {
 
@@ -225,8 +225,9 @@ public class FeedbackActivity extends Activity {
 		try {
 			PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 			message+="\n Sender: " + sender;
-			message+="\n App Version: " + pInfo.versionName + "-" + Global.getInstance().getVerion();
+			message+="\n App Version: " + pInfo.versionName + "-" + Global.getInstance().getVersion();
 			message+="\n AppName: " + Global.getInstance().getAppName();
+			message+="\n Debug Info: " + Global.getInstance().getDeviceDebugInfo();
 		} catch (NameNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

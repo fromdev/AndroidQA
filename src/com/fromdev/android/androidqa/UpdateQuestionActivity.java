@@ -1,8 +1,5 @@
 package com.fromdev.android.androidqa;
 
-import com.fromdev.android.configuration.Constant;
-import com.fromdev.android.configuration.Global;
-
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.BroadcastReceiver;
@@ -24,6 +21,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.fromdev.android.configuration.Constant;
 
 /**
  * @author kamran

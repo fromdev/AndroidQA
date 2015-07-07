@@ -2,6 +2,11 @@ package com.fromdev.android.configuration;
 
 import java.util.ArrayList;
 
+import android.content.Context;
+import android.util.Log;
+import android.view.Gravity;
+import android.widget.Toast;
+
 import com.fromdev.android.androidqa.CommonUtil;
 import com.fromdev.android.entity.Question;
 
@@ -23,9 +28,14 @@ public class Global {
 	private Question questionofday;
 	private String aboutDesc;
 	private String appName;
-	private String verion;
+	private String version;
 	private String emailIdString;
 	private String receiverEmailString;
+	private String deviceDebugInfo = "Debug-infos:"
+     + "\n OS Version: " + System.getProperty("os.version") + "(" + android.os.Build.VERSION.INCREMENTAL + ")"
+     + "\n OS API Level: "+android.os.Build.VERSION.RELEASE + "("+android.os.Build.VERSION.SDK_INT+")"
+     + "\n Device: " + android.os.Build.DEVICE
+     + "\n Model (and Product): " + android.os.Build.MODEL + " ("+ android.os.Build.PRODUCT + ")";
 
 
 	public String getReceiverEmailString() {
@@ -71,12 +81,12 @@ public class Global {
 		this.appName = appName;
 	}
 
-	public String getVerion() {
-		return verion;
+	public String getVersion() {
+		return version;
 	}
 
-	public void setVerion(String verion) {
-		this.verion = verion;
+	public void setVersion(String verion) {
+		this.version = verion;
 	}
 
 	public String getEmailidString() {
@@ -111,7 +121,24 @@ public class Global {
 	}
 
 	public void setQuestionslist(ArrayList<Question> questionslist) {
-		this.questionslist = questionslist;
+		if(questionslist != null && questionslist.size() > 0) {
+			this.questionslist = questionslist;
+		} else {
+			Log.e("setQuestionslist", "Can not use new questions list. File may be corrupted. Ignoring.");
+		}
+	}
+	
+	public String getDeviceDebugInfo() {
+		return deviceDebugInfo;
+	}
+	
+	public void showToast(Context c,String msg, int length) {
+		Toast mToast = Toast.makeText(c,
+				msg, 
+				length);
+
+		mToast.setGravity(Gravity.CENTER, 0, 0);
+		mToast.show();
 	}
 
 	// ===========================================================

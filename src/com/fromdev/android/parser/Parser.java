@@ -93,7 +93,7 @@ public class Parser {
 
 				Global.getInstance().setAppName(
 						getString(mJsonObject,Constant.TAG_APP_NAME));
-				Global.getInstance().setVerion(
+				Global.getInstance().setVersion(
 						getString(mJsonObject,Constant.TAG_VERSION));
 				Global.getInstance().setAboutTitle(
 						getString(mJsonObject,Constant.TAG_ABOUT_TITLE));

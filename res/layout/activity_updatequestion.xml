@@ -19,8 +19,7 @@
                 android:id="@+id/actudateques_btnhome"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:layout_gravity="left|center_vertical"
-                
+                android:layout_gravity="start|center_vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/titlebar_menu_selector" />
@@ -85,7 +84,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="10/05/2014"
+                android:text="@string/default_update_date"
                  />
         </LinearLayout>
 
@@ -112,7 +111,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="ready"
+                android:text="@string/default_update_status"
                  />
         </LinearLayout>
 
