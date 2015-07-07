@@ -63,7 +63,7 @@ public class AboutActivity extends Activity {
 			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 			mVersionTextView.setText("Version "+pInfo.versionName + "-" + Global.getInstance().getVersion());
 		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
+			Global.getInstance().setLastException(e);
 			e.printStackTrace();
 		}
 

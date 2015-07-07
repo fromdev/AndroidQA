@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.ColorDrawable;
@@ -36,6 +38,7 @@ public class FeedbackActivity extends Activity {
 	// Constants
 	// ===========================================================
 
+	public static final String USER_EMAIL = "userEmail";
 	// ===========================================================
 	// Fields
 	// ===========================================================
@@ -47,6 +50,8 @@ public class FeedbackActivity extends Activity {
 	String message;
 	String subject;
 	Dialog dialog;
+	private Editor mEditor;
+	private SharedPreferences mPreferences;
 
 	// ===========================================================
 	// Constructors
@@ -71,9 +76,12 @@ public class FeedbackActivity extends Activity {
 		messageEditText = (EditText) findViewById(R.id.actfback_txtmessage);
 		feedBackButton = (Button) findViewById(R.id.actfback_btnfeedback);
 		homeButton = (Button) findViewById(R.id.actfeedback_btnhome);
+		 mPreferences = getSharedPreferences("pref", MODE_PRIVATE);
+		String defaultUserEmail = mPreferences.getString(USER_EMAIL, "");
+		emailEditText.setText(defaultUserEmail);
+		mEditor = mPreferences.edit();
 		homeButton.setOnClickListener(new OnClickListener() {
-
-			@Override
+		@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent mIntent = new Intent(FeedbackActivity.this,
@@ -93,6 +101,8 @@ public class FeedbackActivity extends Activity {
 				message = messageEditText.getText().toString();
 				if (isOnline()) {
 					if (isEmailValid(sender)) {
+						mEditor.putString(USER_EMAIL, sender);
+						mEditor.commit();
 						showCustomDialog();
 						Send_Email();
 					} else {
@@ -179,6 +189,7 @@ public class FeedbackActivity extends Activity {
 					}
 
 				} catch (Exception e) {
+					Global.getInstance().setLastException(e);
 					Log.e("SendMail", e.getMessage(), e);
 				}
 
@@ -193,8 +204,10 @@ public class FeedbackActivity extends Activity {
 	}
 
 	private void reset() {
-
-		emailEditText.setText("");
+		if(mPreferences!= null) {
+			String defaultUserEmail = mPreferences.getString(USER_EMAIL, "");
+			emailEditText.setText(defaultUserEmail);
+		}
 		messageEditText.setText("");
 	}
 	public boolean isOnline() {
@@ -228,8 +241,10 @@ public class FeedbackActivity extends Activity {
 			message+="\n App Version: " + pInfo.versionName + "-" + Global.getInstance().getVersion();
 			message+="\n AppName: " + Global.getInstance().getAppName();
 			message+="\n Debug Info: " + Global.getInstance().getDeviceDebugInfo();
+			message+="\n Screen Info: " + Global.getInstance().getScreenInfo(getApplicationContext());
+			message+="\n Last Exception: " + Global.getInstance().getLastExceptionAsString();
 		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
+			Global.getInstance().setLastException(e);
 			e.printStackTrace();
 		}
 		return message;

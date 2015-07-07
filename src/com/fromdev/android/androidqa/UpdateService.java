@@ -23,6 +23,7 @@ import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import com.fromdev.android.configuration.Global;
 import com.fromdev.android.parser.Decompress;
 import com.fromdev.android.parser.Parser;
 
@@ -110,6 +111,7 @@ public class UpdateService extends Service {
 
 			return mFile.delete();
 		} catch (Exception e) {
+			Global.getInstance().setLastException(e);
 			Log.e("tag", e.getMessage(),e);
 			return false;
 		}
@@ -145,15 +147,16 @@ public class UpdateService extends Service {
 		}
 
 		catch (FileNotFoundException e) {
+			Global.getInstance().setLastException(e);
 			Log.e(TAG, e.getMessage(),e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			Global.getInstance().setLastException(e);
 			e.printStackTrace();
 		} finally {
 			try {
 				mInputStream.close();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				Global.getInstance().setLastException(e);
 				e.printStackTrace();
 			}
 			mInputStream = null;
@@ -162,13 +165,13 @@ public class UpdateService extends Service {
 			try {
 				mOutputStream.flush();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				Global.getInstance().setLastException(e);
 				e.printStackTrace();
 			}
 			try {
 				mOutputStream.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				Global.getInstance().setLastException(e);
 				e.printStackTrace();
 			}
 			mOutputStream = null;
@@ -244,32 +247,25 @@ public class UpdateService extends Service {
 					if(moveStatus) {
 						deleteFile();
 					}
-
-					
-					// updating system preferences
-					CommonUtil.updatePreferences(mEditor,
-							getResources().getString(R.string.success));
-					// sending a local broadcast to update UI
-					SendLocalBroadCast(getResources().getString(
-							R.string.success));
-					stopSelf();
-
+					udpateStatus(getResources().getString(R.string.success));
 				} else {
-					// updating the preference
-					CommonUtil.updatePreferences(mEditor,getResources().getString(R.string.failed));
-					// sending a local broadcast to update UI
-					SendLocalBroadCast(getResources()
-							.getString(R.string.failed));
-					stopSelf();
+					udpateStatus(getResources().getString(R.string.failed));
 				}
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				CommonUtil.updatePreferences(mEditor,getResources().getString(R.string.failed));
-				SendLocalBroadCast(getResources().getString(R.string.failed));
+				udpateStatus(getResources().getString(R.string.failed));
 				e.printStackTrace();
 				Log.e(TAG, e.getMessage(), e);
+			} finally {
 				stopSelf();
 			}
+		}
+
+		private void udpateStatus(String status) {
+			// updating system preferences
+			CommonUtil.updatePreferences(mEditor,
+					status);
+			// sending a local broadcast to update UI
+			SendLocalBroadCast(status);
 		}
 	});
 

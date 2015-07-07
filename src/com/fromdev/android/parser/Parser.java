@@ -66,15 +66,13 @@ public class Parser {
 			String lineString;
 			while ((lineString = bufferedReader.readLine()) != null) {
 				jsonBuilder.append(lineString);
-
 			}
-
 			bufferedReader.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			Global.getInstance().setLastException(e);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			Global.getInstance().setLastException(e);
 			e.printStackTrace();
 		}
 
@@ -131,6 +129,7 @@ public class Parser {
 					mQuestionList.add(mQuestion);
 				}
 			} catch (JSONException e) {
+				Global.getInstance().setLastException(e);
 				e.printStackTrace();
 				Log.e(TAG, "Error parsing JSON data", e);
 			}
@@ -148,6 +147,7 @@ public class Parser {
 		try {
 			value = json.getString(key);
 		} catch(Exception e) {
+			Global.getInstance().setLastException(e);
 			Log.e(TAG, "Can not find in json doc  key=" + key, e);
 		}
 		return value;
@@ -165,8 +165,7 @@ public class Parser {
 				mJsonObject.getJSONArray("qaList");
 
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-
+				Global.getInstance().setLastException(e);
 				return false;
 			}
 		}

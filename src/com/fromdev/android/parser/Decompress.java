@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import com.fromdev.android.configuration.Global;
+
 import android.content.Context;
 import android.util.Log;
 
@@ -89,6 +91,7 @@ public class Decompress {
 						try {
 							fout.close();
 						}catch(Exception e) {
+							Global.getInstance().setLastException(e);
 							e.printStackTrace();
 						}
 					}
@@ -97,6 +100,7 @@ public class Decompress {
 			}
 			
 		} catch (Exception e) {
+			Global.getInstance().setLastException(e);
 			Log.e("Decompress", "unzip", e);
 		} finally {
 			try {
@@ -104,6 +108,7 @@ public class Decompress {
 					zin.close();
 				}
 			} catch (Exception e) {
+				Global.getInstance().setLastException(e);
 				e.printStackTrace();
 			}
 		}

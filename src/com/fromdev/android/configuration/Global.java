@@ -1,10 +1,16 @@
 package com.fromdev.android.configuration;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.Point;
+import android.os.Build;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.fromdev.android.androidqa.CommonUtil;
@@ -37,7 +43,8 @@ public class Global {
      + "\n Device: " + android.os.Build.DEVICE
      + "\n Model (and Product): " + android.os.Build.MODEL + " ("+ android.os.Build.PRODUCT + ")";
 
-
+	private Throwable lastException = null;
+	
 	public String getReceiverEmailString() {
 		return CommonUtil.defaultOnEmpty(receiverEmailString,"pima.support@gmail.com");
 	}
@@ -132,6 +139,23 @@ public class Global {
 		return deviceDebugInfo;
 	}
 	
+	public String getScreenInfo(Context context) {
+		int measuredWidth = 0;
+		int measuredHeight = 0;
+		WindowManager w = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+		    Point size = new Point();
+		    w.getDefaultDisplay().getSize(size);
+		    measuredWidth = size.x;
+		    measuredHeight = size.y;
+		} else {
+		    Display d = w.getDefaultDisplay();
+		    measuredWidth = d.getWidth();
+		    measuredHeight = d.getHeight();
+		}
+		return "Screen Width: " + measuredWidth + " Screen Height:" + measuredHeight;
+	}
 	public void showToast(Context c,String msg, int length) {
 		Toast mToast = Toast.makeText(c,
 				msg, 
@@ -139,8 +163,22 @@ public class Global {
 
 		mToast.setGravity(Gravity.CENTER, 0, 0);
 		mToast.show();
+	}	
+	
+	public void setLastException(Throwable t) {
+		this.lastException = t;
 	}
 
+	public String getLastExceptionAsString() {
+		String trace = "";
+		if(this.lastException != null) {
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			this.lastException.printStackTrace(pw);
+			trace = sw.toString();
+		}
+		return trace;
+	}
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
 	// ===========================================================
