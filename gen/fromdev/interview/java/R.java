@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.fromdev.android.androidqa;
+package fromdev.interview.java;
 
 public final class R {
     public static final class anim {

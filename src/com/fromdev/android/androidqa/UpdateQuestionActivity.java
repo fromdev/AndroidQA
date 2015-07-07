@@ -21,8 +21,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.fromdev.android.configuration.Constant;
+import fromdev.interview.java.R;
 
 /**
  * @author kamran

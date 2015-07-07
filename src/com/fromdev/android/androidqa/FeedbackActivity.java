@@ -25,9 +25,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.fromdev.android.mail.GMailSender;
 import com.fromdev.android.configuration.Global;
+import fromdev.interview.java.R;
 
 /**
  * @author kamran

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.fromdev.android.androidqa.R;
+import fromdev.interview.java.R;
 import com.fromdev.android.entity.Category;
 /**
  * @author kamran

@@ -1,7 +1,6 @@
 package com.fromdev.android.androidqa;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +11,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-
 import com.fromdev.adapters.TransitionListAdapter;
 import com.fromdev.android.configuration.Global;
 import com.fromdev.android.entity.Category;
 import com.fromdev.android.entity.Question;
+import fromdev.interview.java.R;
 /**
  * @author kamran
  *

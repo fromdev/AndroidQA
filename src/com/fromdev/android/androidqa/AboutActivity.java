@@ -11,8 +11,8 @@ import android.view.Window;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.fromdev.android.configuration.Global;
+import fromdev.interview.java.R;
 
 /**
  * @author kamran

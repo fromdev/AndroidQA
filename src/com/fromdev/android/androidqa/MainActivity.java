@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -22,12 +21,12 @@ import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import com.fromdev.android.configuration.Constant;
 import com.fromdev.android.configuration.Global;
 import com.fromdev.android.entity.Question;
 import com.fromdev.android.parser.Decompress;
 import com.fromdev.android.parser.Parser;
+import fromdev.interview.java.R;
 
 /**
  * @author kamran

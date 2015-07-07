@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.fromdev.android.androidqa.R;
+import fromdev.interview.java.R;
 import com.fromdev.android.entity.Question;
 import com.fromdev.android.interfaces.FragmentLifeCycle;
 /**

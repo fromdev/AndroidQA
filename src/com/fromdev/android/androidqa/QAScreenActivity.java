@@ -2,7 +2,6 @@ package com.fromdev.android.androidqa;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,11 +20,11 @@ import android.view.Window;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.fromdev.android.configuration.Global;
 import com.fromdev.android.entity.Question;
 import com.fromdev.android.fragment.PageFragment;
 import com.fromdev.android.interfaces.FragmentLifeCycle;
+import fromdev.interview.java.R;
 /**
  * @author kamran
  *
