@@ -66,11 +66,9 @@ public final class R {
         public static final int menu_background=0x7f020008;
         public static final int tab_active_default=0x7f020009;
         public static final int tab_default=0x7f02000a;
-        public static final int title_bar_back=0x7f02000b;
-        public static final int title_bar_back_on=0x7f02000c;
-        public static final int title_bar_menu=0x7f02000d;
-        public static final int title_bar_menu_on=0x7f02000e;
-        public static final int titlebar_menu_selector=0x7f02000f;
+        public static final int title_bar_menu=0x7f02000b;
+        public static final int title_bar_menu_on=0x7f02000c;
+        public static final int titlebar_menu_selector=0x7f02000d;
     }
     public static final class id {
         public static final int FrameLayout1=0x7f0b0015;
@@ -143,37 +141,38 @@ public final class R {
         public static final int qaconfig=0x7f050000;
     }
     public static final class string {
-        public static final int about=0x7f090005;
-        public static final int answer=0x7f09000f;
-        public static final int app_name=0x7f090000;
-        public static final int browse_ques=0x7f090003;
-        public static final int category=0x7f090011;
-        public static final int current_update_status=0x7f09000a;
-        public static final int default_update_date=0x7f09001c;
-        public static final int default_update_status=0x7f09001d;
-        public static final int email_address=0x7f09000c;
-        public static final int enter_valid_email=0x7f090017;
-        public static final int failed=0x7f090018;
-        public static final int feedback=0x7f090004;
-        public static final int feedback_successful=0x7f09001b;
-        public static final int home=0x7f090012;
-        public static final int imagedescription=0x7f090001;
-        public static final int in_progress=0x7f09001a;
-        public static final int last_update_on=0x7f090008;
-        public static final int message=0x7f09000d;
-        public static final int more=0x7f090013;
-        public static final int question=0x7f09000e;
-        public static final int question_of_day=0x7f090002;
-        public static final int send_feeback=0x7f090007;
-        public static final int success=0x7f090019;
-        public static final int tap_view_answer=0x7f090016;
-        public static final int tap_view_question=0x7f090015;
-        public static final int title=0x7f090014;
-        public static final int update=0x7f090010;
-        public static final int updateUrl=0x7f09001e;
-        public static final int update_main_message=0x7f090009;
-        public static final int update_now=0x7f09000b;
-        public static final int update_question=0x7f090006;
+        public static final int about=0x7f090006;
+        public static final int answer=0x7f090010;
+        public static final int app_name=0x7f090001;
+        public static final int browse_ques=0x7f090004;
+        public static final int category=0x7f090012;
+        public static final int current_update_status=0x7f09000b;
+        public static final int default_update_date=0x7f09001d;
+        public static final int default_update_status=0x7f09001e;
+        public static final int email_address=0x7f09000d;
+        public static final int empty=0x7f090000;
+        public static final int enter_valid_email=0x7f090018;
+        public static final int failed=0x7f090019;
+        public static final int feedback=0x7f090005;
+        public static final int feedback_successful=0x7f09001c;
+        public static final int home=0x7f090013;
+        public static final int imagedescription=0x7f090002;
+        public static final int in_progress=0x7f09001b;
+        public static final int last_update_on=0x7f090009;
+        public static final int message=0x7f09000e;
+        public static final int more=0x7f090014;
+        public static final int question=0x7f09000f;
+        public static final int question_of_day=0x7f090003;
+        public static final int send_feeback=0x7f090008;
+        public static final int success=0x7f09001a;
+        public static final int tap_view_answer=0x7f090017;
+        public static final int tap_view_question=0x7f090016;
+        public static final int title=0x7f090015;
+        public static final int update=0x7f090011;
+        public static final int updateUrl=0x7f09001f;
+        public static final int update_main_message=0x7f09000a;
+        public static final int update_now=0x7f09000c;
+        public static final int update_question=0x7f090007;
     }
     public static final class style {
         /** 

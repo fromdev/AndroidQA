@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fromdev.interview.java"
-    android:versionCode="14"
-    android:versionName="1.13" >
+    android:versionCode="16"
+    android:versionName="1.15" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -44,10 +44,11 @@
            >
         </activity>
         <activity android:name="com.fromdev.android.androidqa.AboutActivity" >
+             <intent-filter>
+     			action android:name="android.intent.action.VIEW" />
+     		</intent-filter>
         </activity>
         <activity android:name="com.fromdev.android.androidqa.UpdateQuestionActivity" >
-        </activity>
-        <activity android:name="com.fromdev.android.androidqa.QDayAcitivity" >
         </activity>
         <activity android:name="com.fromdev.android.androidqa.MoreActivity" >
         </activity>

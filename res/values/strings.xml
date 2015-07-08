@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="empty"></string>
     <string name="app_name">Java QA</string>
     <string name="imagedescription">Welcome</string>
     <string name="question_of_day">Question Of The Day</string>

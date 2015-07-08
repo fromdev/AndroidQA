@@ -13,7 +13,7 @@
         android:background="@color/theme_color"
         android:enabled="false"
         android:gravity="center"
-        android:text="sdddd"
+        android:text="@string/empty"
         android:textColor="@android:color/white"
         android:visibility="gone" />
 
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:text="string/list_title_placeholder"
+                android:text="@string/empty"
                 android:textAppearance="?android:textAppearanceMedium"
                 android:textColor="#000000" />
 
@@ -47,7 +47,7 @@
                 android:layout_gravity="center_vertical"
                 android:fontFamily="sans-serif-light"
                 android:paddingRight="5dp"
-                android:text="tring/list_description_placeholder"
+                android:text="@string/empty"
                 android:textColor="@color/gray" />
         </LinearLayout>
     </LinearLayout>

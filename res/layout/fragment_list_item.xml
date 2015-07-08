@@ -21,7 +21,7 @@
         		android:layout_width="match_parent"
         		android:layout_height="wrap_content"
         		android:padding="10dp"
-        		android:text="ass"
+        		android:text="@string/empty"
         		android:layout_toLeftOf="@+id/item_numbertext"
         		android:fontFamily="sans-serif-light" 
         		android:textSize="@dimen/textsize_medium_large"
@@ -32,10 +32,11 @@
     		    android:layout_width="wrap_content"
     		    android:layout_height="wrap_content"
     		    android:layout_alignParentRight="true"
+    		    android:layout_alignParentEnd="true"
     		    android:layout_centerVertical="true"
     		    android:fontFamily="sans-serif-light"
     		    android:padding="5dp"
-    		    android:text="sss"
+    		    android:text="@string/empty"
     		    android:textColor="@color/theme_color"
     		    android:textSize="@dimen/textsize_medium_small_static" />
     		
@@ -43,7 +44,7 @@
 
 	</RelativeLayout>
 	<ImageView
-	      android:contentDescription="asd"
+	      android:contentDescription="@string/empty"
           android:layout_width="match_parent"
           android:layout_height="2dp"
           android:background="@color/theme_color"/>

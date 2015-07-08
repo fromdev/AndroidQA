@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:background="@color/bar_separator_color"
-            android:contentDescription="title" />
+            android:contentDescription="@string/empty" />
     </LinearLayout>
 
     <LinearLayout

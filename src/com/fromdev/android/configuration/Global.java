@@ -1,7 +1,11 @@
 package com.fromdev.android.configuration;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 import android.content.Context;
@@ -178,6 +182,33 @@ public class Global {
 			trace = sw.toString();
 		}
 		return trace;
+	}
+
+	public static Long getRemoteFileSize(String url) {
+		Long contentLength = -1l;
+		HttpURLConnection ucon = null;
+		try {
+			final URL uri = new URL(url);
+			ucon = (HttpURLConnection) uri.openConnection();
+			ucon.connect();
+			String contentLengthStr = ucon.getHeaderField("content-length");
+			contentLength = Long.parseLong(contentLengthStr);
+		} catch (final IOException e) {
+			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} finally {
+			if (ucon != null) {
+				try {
+					InputStream in = ucon.getInputStream();
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				ucon.disconnect();
+			}
+		}
+		return contentLength;
 	}
 	// ===========================================================
 	// Methods for/from SuperClass/Interfaces
