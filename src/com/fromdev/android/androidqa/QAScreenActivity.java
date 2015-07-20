@@ -3,7 +3,6 @@ package com.fromdev.android.androidqa;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -41,7 +40,6 @@ public class QAScreenActivity extends FragmentActivity implements OnTouchListene
 	// Fields
 	// ===========================================================
 	private List<PageFragment> mFragments;
-	private FragmentTransaction fragmentTransaction;
 	private ViewPager mPager;
 	private Button mHomeButton;
 	private PagerAdapter mAdapter;

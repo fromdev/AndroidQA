@@ -44,7 +44,6 @@ public class BrowseQuestionAcitvity extends Activity {
 	// ===========================================================
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_browsequestion);
@@ -93,7 +92,7 @@ public class BrowseQuestionAcitvity extends Activity {
 	public ArrayList<String> getCategories(ArrayList<Question> questionList) {
 
 		ArrayList<String> mCNameList = new ArrayList<>();
-		for (int i = 0; i < questionList.size(); i++) {
+		for (int i = 0; questionList != null && i < questionList.size(); i++) {
 
 			if (!mCNameList.contains(questionList.get(i).getCategory()))
 				mCNameList.add(questionList.get(i).getCategory());
