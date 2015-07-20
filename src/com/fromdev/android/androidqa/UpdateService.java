@@ -7,8 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
 import android.app.DownloadManager;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -21,9 +20,11 @@ import android.database.Cursor;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+
 import com.fromdev.android.configuration.Global;
 import com.fromdev.android.parser.Decompress;
 import com.fromdev.android.parser.Parser;
+
 import fromdev.interview.java.R;
 
 /**
@@ -226,7 +227,6 @@ public class UpdateService extends Service {
 
 		@Override
 		public void run() {
-			// TODO Auto-generated method stub
 			File mFile = new File(filepath);
 			try {
 				InputStream mInputStream = new FileInputStream(mFile);

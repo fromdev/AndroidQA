@@ -29,7 +29,7 @@
             android:layout_gravity="center_vertical"
             android:orientation="vertical"
             android:padding="10dp"
-            android:paddingLeft="10dp" >
+            android:paddingLeft="10dp">
 
             <TextView
                 android:id="@+id/item_title"

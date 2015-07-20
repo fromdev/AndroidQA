@@ -2,13 +2,15 @@ package com.fromdev.android.androidqa;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
@@ -17,13 +19,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.Toast;
+
 import com.fromdev.android.configuration.Global;
 import com.fromdev.android.entity.Question;
 import com.fromdev.android.fragment.PageFragment;
 import com.fromdev.android.interfaces.FragmentLifeCycle;
+
 import fromdev.interview.java.R;
 /**
  * @author kamran
@@ -38,6 +41,7 @@ public class QAScreenActivity extends FragmentActivity implements OnTouchListene
 	// Fields
 	// ===========================================================
 	private List<PageFragment> mFragments;
+	private FragmentTransaction fragmentTransaction;
 	private ViewPager mPager;
 	private Button mHomeButton;
 	private PagerAdapter mAdapter;
@@ -62,25 +66,30 @@ public class QAScreenActivity extends FragmentActivity implements OnTouchListene
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_qadisplay);
-		Intent mIntent = getIntent();
-		String intention = mIntent.getStringExtra("intention");
-		if (intention.equalsIgnoreCase("questionofday")) {
-			mFragments = new ArrayList<PageFragment>();
-			mFragments.add(PageFragment.newInstance(Global.getInstance()
-					.getQuestionofday()));
-		} else if (intention.equalsIgnoreCase("browse")) {
-			mFragments = getFragments();
-
-		}
+		setupQAData();
 		// Instantiate a ViewPager and a PagerAdapter.
 		mPager = (ViewPager) findViewById(R.id.pager);
 		mHomeButton = (Button) findViewById(R.id.actqascreen_btnhome);
-
+		mHomeButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent mIntent = new Intent(QAScreenActivity.this,
+						MainActivity.class);
+				mIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(mIntent);
+			}
+		});
 		mAdapter = new PagerAdapter(getSupportFragmentManager());
 		mPager.setAdapter(mAdapter);
 
 		PageListener pl = new PageListener();
 		mPager.setOnPageChangeListener(pl);
+	}
+
+	private void setupQAData() {
+		Intent mIntent = getIntent();
+		String intention = mIntent.getStringExtra("intention");
+		mFragments  = getFragments(intention);
 	}
 
 	@Override
@@ -107,9 +116,22 @@ public class QAScreenActivity extends FragmentActivity implements OnTouchListene
 	// Methods
 	// ===========================================================
 
-	private List<PageFragment> getFragments() {
-
+	private List<PageFragment> getFragments(String intention) {
+		String category = null;
 		List<PageFragment> fList = new ArrayList<PageFragment>();
+		if (intention.equalsIgnoreCase("questionofday")) {
+			Question qod = Global.getInstance().getQuestionofday();
+			category  = qod.getCategory();
+			fList.add(PageFragment.newInstance(qod));
+		} else if (intention.equalsIgnoreCase("browse")) {
+			category = Global.getInstance().getCurrentCategory();
+		}
+		return createFragmentList(category, fList);
+
+	}
+
+	private List<PageFragment> createFragmentList(String category,
+			List<PageFragment> fList) {
 		ArrayList<Question> questions = Global.getInstance().getQuestionslist();
 		for (int i = 0; i < questions.size(); i++) {
 
@@ -117,28 +139,25 @@ public class QAScreenActivity extends FragmentActivity implements OnTouchListene
 			if (questions
 					.get(i)
 					.getCategory()
-					.equalsIgnoreCase(Global.getInstance().getCurrentCategory()))
+					.equalsIgnoreCase(category))
 				fList.add(PageFragment.newInstance(questions.get(i)));
 		}
 
 		return fList;
-
 	}
 
 	// ===========================================================
 	// Inner Classes
 	// ===========================================================
 
-	private class PagerAdapter extends FragmentPagerAdapter {
+	private class PagerAdapter extends FragmentStatePagerAdapter {
 		public PagerAdapter(android.support.v4.app.FragmentManager fm) {
 			super(fm);
-			// TODO Auto-generated constructor stub
 		}
 
 		@Override
 		public Fragment getItem(int position) {
 			return mFragments.get(position);
-			// return ScreenSlidePageFragment.create(position);
 		}
 
 		@Override
