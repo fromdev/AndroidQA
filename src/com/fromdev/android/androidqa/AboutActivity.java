@@ -71,7 +71,6 @@ public class AboutActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent mIntent = new Intent(AboutActivity.this,
 						MainActivity.class);
 				mIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

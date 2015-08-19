@@ -32,7 +32,7 @@ public class Global {
 	// ===========================================================
 	// Fields
 	// ===========================================================
-	private ArrayList<Question> questionslist;
+	private ArrayList<Question> questionslist = new ArrayList<Question>();
 	private String currentCategory;
 	private String aboutTitle;
 	private Question questionofday;

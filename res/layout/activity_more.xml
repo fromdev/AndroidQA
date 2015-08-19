@@ -65,7 +65,7 @@
             android:background="@android:color/white"
             android:orientation="vertical" >
 
-            <Button
+<!--             <Button
                 android:id="@+id/btn_feedback"
                 style="@style/UIButtonInverse"
                 android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                 android:layout_margin="4dp"
                 android:padding="12dp"
                 android:text="@string/feedback"
-                android:textSize="@dimen/textsize_medium" />
+                android:textSize="@dimen/textsize_medium" /> -->
 
             <Button
                 android:id="@+id/btn_update_question"
