@@ -21,7 +21,7 @@ public class MoreActivity extends Activity {
 	// ===========================================================
 	// Fields
 	// ===========================================================
-	private Button mFeedbackButton;
+//	private Button mFeedbackButton;
 	private Button mAboutButton;
 	private Button mUpdatequestionButton;
 	private Button mHomeButton;
